@@ -1,0 +1,37 @@
+html{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: aliceblue;
+}
+form{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    width: max-content;
+    padding: 0px;
+    background-color: white;
+    border-radius: 5px;
+    flex-direction: column;
+}
+.f-header{
+    background-color: skyblue;
+    padding: 10px;
+    color: white;
+}
+.f-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px;
+    color: black;
+}
+input{
+    width: 90%;
+    height: 40px;
+    justify-self: center;
+}
+button{
+    background-color: greenyellow;
+    color: azure;
+    padding: 10px;
+}
