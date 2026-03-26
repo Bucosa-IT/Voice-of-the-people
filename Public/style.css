@@ -1,10 +1,18 @@
 html{
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
     background-color: aliceblue;
+    display: flex;
+    font-family: monospace;
+    height: 100%;
+    width: 100%;
+}
+body{
+    display: flex;
+    width: 277px;
+    align-self: anchor-center;
+    justify-self: center;
 }
 form{
-    display: flex;
+   display: flex;
     align-self: center;
     justify-self: center;
     width: max-content;
@@ -12,6 +20,7 @@ form{
     background-color: white;
     border-radius: 5px;
     flex-direction: column;
+    box-shadow: 0px 0px 11px 2px #80808070;
 }
 .f-header{
     background-color: skyblue;
@@ -25,13 +34,26 @@ form{
     margin: 10px;
     color: black;
 }
+label{
+    color: darkgrey;
+}
 input{
     width: 90%;
-    height: 40px;
+    height: 30px;
     justify-self: center;
+    margin: 6px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: inset 0px 1px 4px 0px;
+    outline: #00ff00;
 }
 button{
-    background-color: greenyellow;
+   background-color: #81c31c;
     color: azure;
     padding: 10px;
+    border: none;
+    width: 105px;
+    height: 38px;
+    border-radius: 3px;
+    font-family: cursive;
 }
