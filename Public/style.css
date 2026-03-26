@@ -23,9 +23,11 @@ form{
     box-shadow: 0px 0px 11px 2px #80808070;
 }
 .f-header{
-    background-color: skyblue;
+   background-color: #0098ff;
     padding: 10px;
     color: white;
+    font-weight: bold;
+    font-size: x-large;
 }
 .f-content{
     display: flex;
