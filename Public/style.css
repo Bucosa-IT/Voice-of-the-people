@@ -60,3 +60,15 @@ button{
     height: 38px;
     border-radius: 3px;
 }
+.more-info{
+    display: flex;
+    flex-direction: column;
+    margin: 34px;
+    background: #ffffff;
+    padding: 23px;
+    border-radius: 12px;
+    box-shadow: 1px 1px 3px 0px rgb(171 255 227 / 50%);
+}
+h4{
+    color: crimson;
+}
