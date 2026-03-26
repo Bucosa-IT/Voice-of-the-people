@@ -38,7 +38,7 @@ label{
     color: darkgrey;
 }
 input{
-    width: 90%;
+   width: 90%;
     height: 30px;
     justify-self: center;
     margin: 6px;
@@ -46,6 +46,8 @@ input{
     border: none;
     box-shadow: inset 0px 1px 4px 0px;
     outline: #00ff00;
+    padding-left: 10px;
+    color: #6f6969;
 }
 button{
    background-color: #81c31c;
