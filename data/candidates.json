@@ -1,0 +1,101 @@
+[
+    {
+        "id": "cand_69caf90886e8b",
+        "name": "Alice Johnson",
+        "position": "School President",
+        "batch": "2024",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf908897c5",
+        "name": "Bob Smith",
+        "position": "School President",
+        "batch": "2024",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf9088bf13",
+        "name": "Carol Davis",
+        "position": "School President",
+        "batch": "2023",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf9088e801",
+        "name": "David Wilson",
+        "position": "School Vice President",
+        "batch": "2024",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf90890b58",
+        "name": "Emma Brown",
+        "position": "School Vice President",
+        "batch": "2024",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf90893b68",
+        "name": "Frank Miller",
+        "position": "School Secretary",
+        "batch": "2023",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf90896c5c",
+        "name": "Grace Lee",
+        "position": "School Secretary",
+        "batch": "2023",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf90899768",
+        "name": "Henry Taylor",
+        "position": "School Treasurer",
+        "batch": "2022",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf9089ca55",
+        "name": "Iris Martinez",
+        "position": "School Treasurer",
+        "batch": "2022",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf9089f8a7",
+        "name": "Jack Anderson",
+        "position": "Class Representative",
+        "batch": "2024",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    },
+    {
+        "id": "cand_69caf908a207d",
+        "name": "Karen Thomas",
+        "position": "Class Representative",
+        "batch": "2024",
+        "imageUrl": "",
+        "votes": 0,
+        "dateAdded": "2026-03-31 00:28:24"
+    }
+]

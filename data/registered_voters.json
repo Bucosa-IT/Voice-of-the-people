@@ -1,0 +1,51 @@
+[
+    {
+        "voterId": "STU001",
+        "voterKey": "20240001",
+        "name": "John Student",
+        "batch": "2024",
+        "registeredDate": "2026-03-31 00:28:54"
+    },
+    {
+        "voterId": "STU002",
+        "voterKey": "20240002",
+        "name": "Jane Doe",
+        "batch": "2024",
+        "registeredDate": "2026-03-31 00:28:54"
+    },
+    {
+        "voterId": "STU003",
+        "voterKey": "20240003",
+        "name": "Michael Chen",
+        "batch": "2024",
+        "registeredDate": "2026-03-31 00:28:54"
+    },
+    {
+        "voterId": "STU004",
+        "voterKey": "20230004",
+        "name": "Sarah Wilson",
+        "batch": "2023",
+        "registeredDate": "2026-03-31 00:28:54"
+    },
+    {
+        "voterId": "STU005",
+        "voterKey": "20230005",
+        "name": "Ahmed Khan",
+        "batch": "2023",
+        "registeredDate": "2026-03-31 00:28:54"
+    },
+    {
+        "voterId": "STU006",
+        "voterKey": "20220006",
+        "name": "Lisa Anderson",
+        "batch": "2022",
+        "registeredDate": "2026-03-31 00:28:54"
+    },
+    {
+        "voterId": "STU007",
+        "voterKey": "20220007",
+        "name": "Carlos Rodriguez",
+        "batch": "2022",
+        "registeredDate": "2026-03-31 00:28:54"
+    }
+]
