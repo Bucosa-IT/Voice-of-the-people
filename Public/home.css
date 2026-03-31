@@ -1,17 +1,38 @@
 
 /* style ya home page */
 html{
-    background: linear-gradient(335deg, #735656, #ffec6614);
-}
+  background: linear-gradient(335deg, #bfdbd9, #ffec6614);}
+
 body{
-    justify-items: center;
+   justify-items: center;
+    margin-left: 21%;
+}
+.sideBar{
+    display: flex;
+    background: #ffffff;
+    color: aliceblue;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    align-content: flex-end;
+    width: 20%;
+    flex-direction: column;
+    padding-top: 155px;
+    align-items: anchor-center;
+    box-shadow: 0 10px 10px 10px #00000029;
 }
 section.votePresident, .voteGs{
     width: max-content;
     margin: 100px;
-   background: linear-gradient(rgb(93 22 22), black);
+    background: linear-gradient(rgb(0 0 0), #000000c4);
     padding: 70px;
     border-radius: 10px;
+}
+h1{
+    color: #b37676;
+    text-align: center;
+    font-family: monospace;
 }
 div.presidents{
     display: flex;
@@ -20,8 +41,9 @@ div.presidents{
     gap: 50px;
 }
 .presidents div{
-    backdrop-filter: blur(29px);
-    width: 135px;
+   backdrop-filter: blur(29px);
+    width: 200px;
+    height: 300px;
     background: #f0f8ff57;
     padding: 29px;
     text-align: center;
@@ -31,6 +53,10 @@ div.presidents{
 .presidents div:hover{
     transform: scale(1.05);
     box-shadow: inset 0 0 10px 10px rgba(247, 247, 247, 0.144);
+}
+div img{
+        width: 100px;
+    border-radius: 23px;
 }
 .fa-user::before{
     content: "\f007";
@@ -55,7 +81,7 @@ h1{
 button{
     display: block;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 45px;
     padding: 5px;
     background-color: red;
     border: none;
@@ -73,24 +99,39 @@ img{
     user-select: none;
     border-radius: 50%;
     width: 200px;
-    position: absolute;
-    right: 20px;
-    top: 15px;
+    cursor: pointer;
 }
 #buIt{
-    position: absolute;
-    right: 80px;
-    top: 216px;
     color: darkslategrey;
     font-family: fantasy;
 }
 .exit{
-    color: wheat;
-    background: dodgerblue;
-    width: 84px;
-    font-size: larger;
+    color: rgb(255, 255, 255);
+    background: rgb(218, 214, 15);
+    width: fit-content;
+    font-size: large;
+    padding: 10px;
     height: 47px;
-    position: fixed;
-    top: 20px;
-    left: 31px;
+    text-decoration: none;
+    margin: -100px;
+}
+.confidentialityInfo{
+    color: white;
+    background: #0f73af;
+    padding: 10px;
+    width: 80%;
+    margin-top: 79px;
+    border-radius: 10px;
+    height: 380px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+#title{
+    position: absolute;
+    top: 5px;
+    color: rgba(155, 155, 155, 0.267);
+    font-size: 35px;
+    
 }
