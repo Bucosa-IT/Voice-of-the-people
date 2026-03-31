@@ -70,6 +70,7 @@ button{
     height: 38px;
     border-radius: 3px;
     transition: all ease-in-out 1s;
+    margin-top: 10px;
 }
 button:hover{
     background-color: white;
@@ -119,3 +120,4 @@ a:hover{
         width:250px
     }
 }
+
