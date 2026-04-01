@@ -53,7 +53,7 @@ class Election(Model):
     description:Mapped[int] = mapped_column(String(64),index=True) 
     image_url: Mapped[str] =mapped_column(String(64),index=True) 
 
-    created_by:Mapped[str] =mapped_column(ForeignKey("users.name")) 
+    created_by:Mapped[str] =mapped_column(ForeignKey("Users.name")) 
     created_at:Mapped[datetime]=mapped_column(DateTime(timezone.utc),server_default=func.now())
 
     candidates:Mapped[list["Candidate"]] = relationship(back_populates="elections") 

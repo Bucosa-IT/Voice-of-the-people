@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv() 
 
-DATABASE_URL = os.get_env("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(
-    DATABASE_URL, echo = True , 
+    DATABASE_URL, echo = True  
 ) 
 
 session_local =sessionmaker(
-    bind=engine ,utoflush =False ,autoommit =False
+    bind=engine ,autoflush =False ,autocommit =False
 ) 
 
 class Model(DeclarativeBase):
