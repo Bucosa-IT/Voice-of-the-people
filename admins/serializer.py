@@ -2,6 +2,9 @@ from pydantic import BaseModel
 from typing import Optional 
 from datetime import datetime
 
+class LoginRequest(BaseModel):
+    username :str
+    password :str 
 class ReadElection(BaseModel):
     id :int 
     name :str
@@ -18,6 +21,8 @@ class ReadUser(BaseModel):
     created_at : datetime 
     is_admin:bool 
     is_voter:bool
+    class config:
+        from_attributes =True
 
 class ReadCandidate(BaseModel):
     id :int 

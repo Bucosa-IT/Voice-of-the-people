@@ -1,21 +1,27 @@
-from database.database import get_connection 
+from database.settings import get_connection 
 from admins.models import Candidate 
 from admins.serializer import UpdateCandidate ,CreateCandidate , ReadCandidate
 from sqlalchemy.orm import Session 
 from fastapi import APIRouter ,HTTPException ,status ,Depends  
+from auth.admin.authentication import get_current_admin
+from admins.models import User 
 
 
 router = APIRouter(prefix="/candidates",tags=["candidates"]) 
 
 
 @router.get("/",response_model=list[ReadCandidate])
-async def get_all_candidates(session:Session =Depends(get_connection)):
+async def get_all_candidates(
+    session:Session =Depends(get_connection),
+    current_admin : User = Depends(get_current_admin)
+    ):
     candidates = session.query(Candidate).all() 
     session.close()
-    return candidates 
+    return  candidates
 
-@router.post("/",response_model=ReadCandidate)
-async def create_a_candidate(new_candidate : CreateCandidate ,session:Session =Depends(get_connection)):
+@router.post("/",response_model=ReadCandidate,
+             )
+async def create_a_candidate(new_candidate : CreateCandidate ,session:Session =Depends(get_connection),current_admin :User =Depends(get_current_admin)):
     created_candidate = Candidate(name=new_candidate.name ,description=new_candidate.description,
                                   image_url = new_candidate.image_url,created_by = new_candidate.created_by ,
                                   to_election =new_candidate.to_election)
@@ -27,15 +33,15 @@ async def create_a_candidate(new_candidate : CreateCandidate ,session:Session =D
     return created_candidate
 
 @router.get("/{candidate_id}",response_model=ReadCandidate)
-async def search_a_user(candidate_id:int ,session:Session=Depends(get_connection)):
+async def search_a_user(candidate_id:int ,session:Session=Depends(get_connection), current_admin :User =Depends(get_current_admin)):
     candidate = session.query(Candidate).filter(Candidate.id == candidate_id).first()
     if not candidate :
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND , detail="user not found")
     session.close()
-    return candidate 
+    return  candidate
 
 @router.delete("/{candidate_id}",response_model=ReadCandidate)
-async def delete_a_candidate(candidate_id:int ,session:Session=Depends(get_connection)):
+async def delete_a_candidate(candidate_id:int ,session:Session=Depends(get_connection),current_admin :User =Depends(get_current_admin)):
     deleted_candidate = session.query(Candidate).filter(Candidate.id == candidate_id).first()
     if not deleted_candidate :
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND , detail="user to delete not found ")
@@ -49,7 +55,8 @@ async def delete_a_candidate(candidate_id:int ,session:Session=Depends(get_conne
 async def update_a_candidate(
     candidate_id: int,
     updated_data: UpdateCandidate,
-    session: Session = Depends(get_connection)
+    session: Session = Depends(get_connection),
+    current_admin : User =Depends(get_current_admin)
 ):
     candidate = session.query(Candidate).filter(Candidate.id == candidate_id).first()
     if not candidate:

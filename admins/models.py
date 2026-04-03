@@ -1,6 +1,6 @@
 from sqlalchemy import String ,Integer ,Boolean ,DateTime ,ForeignKey ,func
 from sqlalchemy.orm import Mapped ,mapped_column , relationship 
-from database.database import Model 
+from database.settings import Model 
 from datetime import datetime ,timezone
 
 
@@ -14,10 +14,10 @@ class User(Model):
 
     is_admin:Mapped[bool]=mapped_column(Boolean ,default=False)
     is_voter:Mapped[bool]=mapped_column(Boolean ,default=False)
-    created_at:Mapped[datetime]=mapped_column(DateTime(timezone.utc),server_default=func.now()) 
+    created_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),server_default=func.now()) 
 
-    elections:Mapped["Election"] = relationship(back_populates="creator")
-    candidates:Mapped["Candidate"] = relationship(back_populates="creator")
+    elections:Mapped[list["Election"]] = relationship(back_populates="creator")
+    candidates:Mapped[list["Candidate"]] = relationship(back_populates="creator")
 
 
 
@@ -35,7 +35,7 @@ class Candidate(Model):
 
     created_by:Mapped[str]= mapped_column(ForeignKey("Users.name"))
     to_election : Mapped[str]=mapped_column(ForeignKey("Elections.name"))
-    created_at : Mapped[datetime]= mapped_column(DateTime(timezone.utc),server_default=func.now()) 
+    created_at : Mapped[datetime]= mapped_column(DateTime(timezone=True),server_default=func.now()) 
 
     creator :Mapped["User"] = relationship(back_populates="candidates") 
     election :Mapped["Election"] = relationship(back_populates="candidates")
@@ -54,11 +54,21 @@ class Election(Model):
     image_url: Mapped[str] =mapped_column(String(64),index=True) 
 
     created_by:Mapped[str] =mapped_column(ForeignKey("Users.name")) 
-    created_at:Mapped[datetime]=mapped_column(DateTime(timezone.utc),server_default=func.now())
+    created_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),server_default=func.now())
 
     candidates:Mapped[list["Candidate"]] = relationship(back_populates="election") 
     creator:Mapped["User"] = relationship(back_populates="elections")
 
 
     def __repr__(self):
-        return f"<election {self.name}>"
+        return f"<election {self.name}>" 
+    
+
+class SessionModel(Model):
+    __tablename__= "Sessions"
+    
+    id:Mapped[str]=mapped_column(String(64),primary_key=True)
+    user_id :Mapped[int] = mapped_column(Integer,ForeignKey("Users.id"))
+
+    created_at :Mapped[datetime] =mapped_column(DateTime(timezone=True),server_default=func.now())
+    expires_at : Mapped[datetime] = mapped_column()
