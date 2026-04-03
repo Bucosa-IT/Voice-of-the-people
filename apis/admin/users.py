@@ -1,37 +1,38 @@
 from fastapi import APIRouter ,Depends , HTTPException ,status 
 from admins.models import User 
 from admins.serializer import ReadUser ,UpdateUser ,CreateUser 
-from database.database import get_connection 
+from database.settings import get_connection 
 from sqlalchemy.orm import Session 
+from auth.admin.authentication import get_current_admin
 
 router =APIRouter( prefix="/users",tags=["users"]) 
 
-@router.get("/",response_model=list[ReadUser]) 
-async def get_all_users(session:Session=Depends(get_connection)):
+@router.get("/",response_model=list[ReadUser] ) 
+async def get_all_users(session:Session=Depends(get_connection),current_admin :User =Depends(get_current_admin)):
     users = session.query(User).all() 
     session.close()
     return users 
 
 @router.get("/{user_id}",response_model =ReadUser)
-async def search_a_user(user_id :int , session:Session =Depends(get_connection)) :
+async def search_a_user(user_id :int , session:Session =Depends(get_connection),current_admin :User =Depends(get_current_admin)) :
      user = session.query(User).filter(User.id == user_id).first()
      if not user :
           raise HTTPException(status_code=status.HTTP_404_NOT_FOUND ,detail="user not found")
-     return user 
+     return user
 
 @router.delete("/{user_id}",response_model=ReadUser)
-async def delete_a_user(user_id:int , session:Session =Depends(get_connection)):
+async def delete_a_user(user_id:int , session:Session =Depends(get_connection),current_admin :User =Depends(get_current_admin)):
      deleted_user = session.query(User).filter(User.id ==user_id).first()
      if not deleted_user : 
           raise HTTPException(status_code=status.HTTP_404_NOT_FOUND ,detail= "user not found")
      session.delete(deleted_user)
      session.commit()
      session.close()
-     return deleted_user 
+     return deleted_user
 
 @router.post("/",response_model=ReadUser)
-async def create_a_user(new_user:CreateUser,session:Session= Depends(get_connection)):
-      new_created_user = User(name=new_user.name,password=new_user.password,reg_number=new_user.reg_number)
+async def create_a_user(new_user:CreateUser,session:Session= Depends(get_connection),current_admin :User =Depends(get_current_admin)):
+      new_created_user = User(name=new_user.name,password=new_user.password,reg_number=new_user.reg_number,)
       session.add(new_created_user)
       session.commit()
       session.refresh(new_created_user)
@@ -39,7 +40,7 @@ async def create_a_user(new_user:CreateUser,session:Session= Depends(get_connect
       return new_created_user
 
 @router.patch("/{user_id}",response_model=ReadUser)
-async def update_a_user(user_id:int,updated_data:UpdateUser,session:Session=Depends(get_connection)):
+async def update_a_user(user_id:int,updated_data:UpdateUser,session:Session=Depends(get_connection),current_admin :User =Depends(get_current_admin)):
      updated_user = session.query(User).filter(User.id == user_id).first()
      if not updated_user : 
           raise HTTPException(status_code= status.HTTP_404_NOT_FOUND,detail="no user found ")
@@ -50,4 +51,4 @@ async def update_a_user(user_id:int,updated_data:UpdateUser,session:Session=Depe
      session.commit()
      session.refresh(updated_user)
      session.close()
-     return updated_user
+     return  updated_user
